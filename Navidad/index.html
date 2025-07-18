@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cuenta Regresiva para Navidad</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      background: #f8f1e4;
+      background-image: url('https://www.transparenttextures.com/patterns/white-wall-3.png');
+      color: #5e1a1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      color: #8b0000;
+      margin-bottom: 0.5em;
+      text-shadow: 1px 1px 1px #e6cfa7;
+    }
+
+    #contador {
+      font-size: 1.8rem;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 1em 2em;
+      border-radius: 15px;
+      border: 3px solid #cbb279;
+      box-shadow: 0 0 15px rgba(139, 0, 0, 0.2);
+      color: #4b1d1d;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #7b5e3b;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎁 ¡Navidad se acerca! 🎁</h1>
+  <div id="contador">Cargando...</div>
+
+  <footer>Una cuenta regresiva con espíritu navideño ✨</footer>
+
+  <script>
+    function actualizarContador() {
+      const ahora = new Date();
+      let navidad = new Date(ahora.getFullYear(), 11, 25, 0, 0, 0);
+
+      if (ahora > navidad) {
+        navidad = new Date(ahora.getFullYear() + 1, 11, 25, 0, 0, 0);
+      }
+
+      const diferencia = navidad - ahora;
+
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+      const texto = diferencia <= 0
+        ? "¡Hoy es Navidad! 🎄🎅"
+        : `Faltan ${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos para Navidad.`;
+
+      document.getElementById("contador").textContent = texto;
+    }
+
+    actualizarContador();
+    setInterval(actualizarContador, 1000);
+  </script>
+
+</body>
+</html>
