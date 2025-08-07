@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Facturación Avanzado</title>
+    <link rel="stylesheet" href="style-factura.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Facturación</h1>
+        <nav>
+            <ul>
+                <li><a href="#inventario">Inventario</a></li>
+                <li><a href="#facturacion">Facturación</a></li>
+                <li><a href="#historial">Historial</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inventario" class="section-active">
+            <h2>Inventario de Productos</h2>
+            <button id="addProductBtn">Agregar Nuevo Producto</button>
+            <div id="product-grid">
+                </div>
+        </section>
+
+        <section id="facturacion">
+            <h2>Punto de Venta</h2>
+            <div class="sale-container">
+                <div class="product-selection">
+                    <h3>Seleccionar Productos</h3>
+                    <input type="text" id="productSearch" placeholder="Buscar producto por nombre..." autocomplete="off">
+                    <div id="searchResults" class="search-results">
+                        </div>
+                    <div id="availableProductsGrid" class="available-products-grid">
+                        <p>Cargando productos...</p>
+                    </div>
+                    <div id="selectedProductInfo" class="selected-product-info" style="display: none;">
+                        <p>Producto: <span id="selectedProductName"></span></p>
+                        <p>Precio Unitario: $<span id="selectedProductPrice"></span></p>
+                        <p>Stock Disponible: <span id="selectedProductStock"></span></p>
+                        <label for="productQuantityToAdd">Cantidad a Añadir:</label>
+                        <input type="number" id="productQuantityToAdd" min="1" value="1">
+                        <button id="addToCartBtn">Añadir al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="cart-summary">
+                    <h3>Carrito de Compras</h3>
+                    <div id="cartItems">
+                        <p>Tu carrito está vacío.</p>
+                    </div>
+                    <div class="cart-totals">
+                        <p>Subtotal: $<span id="cartSubtotal">0.00</span></p>
+                        <p>IVA (12%): $<span id="cartTax">0.00</span></p>
+                        <h3>Total: $<span id="cartTotal">0.00</span></h3>
+                    </div>
+                    <button id="clearCartBtn" class="action-button">Vaciar Carrito</button>
+                    <button id="proceedToPaymentBtn" class="action-button primary-button" disabled>Proceder al Pago</button>
+                </div>
+            </div>
+            <div id="payment-options" class="payment-options" style="display: none;">
+                <h3>Método de Pago</h3>
+                <div class="payment-method-selection">
+                    <button id="cashPaymentBtn" class="payment-button">Efectivo</button>
+                    <button id="cardPaymentBtn" class="payment-button">Tarjeta</button>
+                </div>
+
+                <div id="cashPaymentDetails" class="payment-details" style="display: none;">
+                    <h4>Pago en Efectivo</h4>
+                    <p>Total a Pagar: $<span id="cashTotalDisplay">0.00</span></p>
+                    <label for="cashReceived">Efectivo Recibido:</label>
+                    <input type="number" id="cashReceived" step="0.01" min="0" value="0">
+                    <p>Cambio a Devolver: $<span id="cashChangeDisplay">0.00</span></p>
+                    <button id="completeCashPaymentBtn" class="action-button primary-button">Completar Venta (Efectivo)</button>
+                </div>
+
+                <div id="cardPaymentDetails" class="payment-details" style="display: none;">
+                    <h4>Pago con Tarjeta</h4>
+                    <p>Total a Pagar: $<span id="cardTotalDisplay">0.00</span></p>
+                    <div id="posAnimation" class="pos-animation" style="display: none;">
+                        <p>Acerque su tarjeta al POS...</p>
+                        <div class="spinner"></div>
+                    </div>
+                    <button id="completeCardPaymentBtn" class="action-button primary-button">Completar Venta (Tarjeta)</button>
+                </div>
+
+                <button id="cancelPaymentBtn" class="action-button">Cancelar Pago</button>
+            </div>
+        </section>
+
+        <section id="historial">
+            <h2>Historial de Facturas</h2>
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label for="filterDateStart">Fecha Desde:</label>
+                    <input type="date" id="filterDateStart">
+                </div>
+                <div class="filter-group">
+                    <label for="filterDateEnd">Fecha Hasta:</label>
+                    <input type="date" id="filterDateEnd">
+                </div>
+                <div class="filter-group">
+                    <label for="filterPaymentMethod">Tipo de Pago:</label>
+                    <select id="filterPaymentMethod">
+                        <option value="all">Todos</option>
+                        <option value="Efectivo">Efectivo</option>
+                        <option value="Tarjeta">Tarjeta</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterInvoiceId">Buscar por ID:</label>
+                    <input type="text" id="filterInvoiceId" placeholder="ID de la factura...">
+                </div>
+                <button id="applyFiltersBtn" class="action-button">Aplicar Filtros</button>
+                <button id="clearFiltersBtn" class="action-button">Limpiar Filtros</button>
+            </div>
+            <div class="history-summary-box">
+                <p>Facturas mostradas: <strong id="historyCount">0</strong></p>
+            </div>
+            <div class="table-container">
+                <table id="historyTable">
+                    <thead>
+                        <tr>
+                            <th>ID de Factura</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Método de Pago</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+                <p id="noHistoryMessage" style="display: none;">No se encontraron facturas con los filtros seleccionados.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script-factura.js"></script>
+
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2><span id="modalTitle">Agregar Nuevo Producto</span></h2>
+            <form id="productForm">
+                <input type="hidden" id="productId">
+                <label for="productName">Nombre del Producto:</label>
+                <input type="text" id="productName" required>
+
+                <label for="productPrice">Precio:</label>
+                <input type="number" id="productPrice" step="0.01" required>
+
+                <label for="productQuantity">Cantidad:</label>
+                <input type="number" id="productQuantity" required>
+
+                <button type="submit" id="saveProductBtn">Guardar Producto</button>
+                <button type="button" class="cancel-button">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+  
+    
+</body>
+</html>

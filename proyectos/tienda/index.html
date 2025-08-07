@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Tienda</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Mi Tienda</h1>
+        <div class="carrito-icono">
+            <img src="images/cart.svg" alt="Carrito de compras">
+            <span id="contador-carrito">0</span>
+        </div>
+    </header>
+
+    <main>
+        <section id="productos" class="catalogo-productos">
+            <!-- Los productos se cargarán aquí con JavaScript -->
+        </section>
+    </main>
+
+    <aside class="carrito">
+        <h2>Carrito</h2>
+        <div id="carrito-items">
+            <!-- Los productos del carrito se mostrarán aquí -->
+        </div>
+        <p>Total: <span id="carrito-total">$0.00</span></p>
+        <button id="vaciar-carrito">Vaciar Carrito</button>
+    </aside>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
