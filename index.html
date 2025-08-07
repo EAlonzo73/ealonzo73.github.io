@@ -2,60 +2,177 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Estoy trabajando en esto</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Roboto', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    .mensaje {
-      font-weight: 700;
-      animation: aparecer 1.2s ease-out, brillo 1.5s infinite;
-    }
-
-    .mensaje::after {
-      content: "";
-      animation: puntos 1.5s infinite steps(4);
-    }
-
-    @keyframes aparecer {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes puntos {
-      0%   { content: ""; }
-      25%  { content: "."; }
-      50%  { content: ".."; }
-      75%  { content: "..."; }
-    }
-
-    @keyframes brillo {
-      0%, 100% {
-        text-shadow: 0 0 5px #fff;
-      }
-      50% {
-        text-shadow: 0 0 20px #fff;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emilio Alonzo | Desarrollador Full Stack</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
-  <div class="mensaje">Estoy trabajando en esto</div>
+  <nav class="navbar">
+      <div class="container">
+          <a href="#top" class="navbar-brand">Emilio Alonzo</a>
+          <ul class="navbar-nav">
+              <li><a href="#estudios">Formación</a></li>
+              <li><a href="#certificaciones">Certificaciones</a></li>
+              <li><a href="#skills">Conocimientos</a></li>
+              <li><a href="#proyectos">Proyectos</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+          </ul>
+      </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <h1 class="logo">Emilio Alonzo</h1>
+      <p class="tagline">Desarrollador Web | Java · Python · JavaScript</p>
+    </div>
+  </header>
+
+  <section class="intro">
+    <div class="container">
+      <h2>Hola, soy Emilio Alonzo</h2>
+      <p>Desarrollador Full Stack apasionado por construir soluciones web robustas y escalables. Listo para aportar mis habilidades en Java, Python y JavaScript a tu próximo proyecto o equipo de desarrollo.</p>
+    </div>
+  </section>
+
+  <section class="seccion" id="estudios">
+    <div class="container">
+      <h2>Formación Académica</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Bachiller en Computación</h3>
+          <p>Instituto Profesional de Computación</p>
+          <span>2021 - 2022</span>
+        </div>
+        <div class="card">
+          <h3>Ingeniería en Ciencias y Sistemas</h3>
+          <p>Universidad de San Carlos de Guatemala</p>
+          <span>2023 - En curso</span>
+        </div>
+        <div class="card">
+          <h3>Programador Junior</h3>
+          <p>Fundación Génesis Empresarial | SISAP | IRSI</p>
+          <span>2025</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="certificaciones">
+    <div class="container">
+      <h2>Certificaciones</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Platzi</h3>
+          <ul class="skills-list">
+            <li>Curso Básico de Computadores e Informática</li>
+            <li>Curso Básico de Programación</li>
+            <li>Fundamentos de Programación</li>
+            <li>Curso Práctico de C++</li>
+            <li>Curso de Introducción a C</li>
+            <li>Desarrollo con Node.js</li>
+            <li>Curso de C++ Básico</li>
+            <li>Curso de Diseño de Identidad Corporativa</li>
+            <li>Diseño Gráfico</li>
+            <li>Curso Gratis de Estrategias para Aprender Inglés en Línea</li>
+          </ul>
+          <a href="https://platzi.com/p/emilioalonzo73/" class="btn" target="_blank">Ver todas las certificaciones</a>
+        </div>
+
+        <div class="card">
+          <h3>Coursera</h3>
+          <ul class="skills-list">
+            <li>
+              HTML, CSS y Javascript para desarrolladores web – Johns Hopkins University
+              <a href="https://www.coursera.org/account/accomplishments/verify/8QZ4QZ8EVRZ8" class="btn" target="_blank">Ver Certificado</a>
+            </li>
+            <li>
+              Microsoft Access – Universitat Autònoma de Barcelona
+              <a href="https://www.coursera.org/account/accomplishments/verify/GXUKF3BGFZFT" class="btn" target="_blank">Ver Certificado</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Google</h3>
+          <ul class="skills-list">
+            <li>
+              Protege tu Negocio: Ciberseguridad en el Teletrabajo (2023)
+              <a href="https://skillshop.exceedlms.com/student/award/g53tHciDLTixodWWChxNEU5x" class="btn" target="_blank">Ver Certificado</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="seccion" id="skills">
+    <div class="container">
+      <h2>Conocimientos</h2>
+      <ul class="skills-list">
+        <li><i class="fab fa-java"></i> Java</li>
+        <li><i class="fab fa-python"></i> Python</li>
+        <li><i class="fab fa-js"></i> JavaScript</li>
+        <li><i class="fab fa-html5"></i> HTML5</li>
+        <li><i class="fab fa-css3-alt"></i> CSS3</li>
+        <li><i class="fas fa-database"></i> SQL (SQL Server, SQLite)</li>
+        <li><i class="fas fa-database"></i> NoSQL (MongoDB)</li>
+        <li><i class="fab fa-node-js"></i> Node.js</li>
+        <li><i class="fab fa-docker"></i> Docker</li> <li><i class="fas fa-cogs"></i> C++</li> <li><i class="fas fa-mail-bulk"></i> Postman</li> <li><i class="fab fa-php"></i> PHP</li> <li><i class="fas fa-code-branch"></i> Git / GitHub</li>
+        </ul>
+    </div>
+  </section>
+
+  <section class="seccion" id="proyectos">
+    <div class="container">
+      <h2>Proyectos Destacados</h2>
+      <div class="grid">
+        <div class="card proyecto">
+          <h3>Sistema de Facturación (Java, Spring Boot)</h3>
+          <p>Interfaz funcional para simular facturas, productos y totales, aplicando patrones de diseño.</p>
+          <a href="proyectos/facturacion/index.html" class="btn">Ver Demo</a>
+        </div>
+        <div class="card proyecto">
+          <h3>Sitio de Ventas (HTML, CSS, JavaScript)</h3>
+          <p>Catálogo interactivo con simulación de carrito de compras, enfocado en usabilidad.</p>
+          <a href="proyectos/sitio-ventas/index.html" class="btn">Ver Demo</a>
+        </div>
+        <div class="card proyecto">
+          <h3>Página de Evento (HTML, CSS, JavaScript)</h3>
+          <p>Sitio de evento profesional con animaciones modernas y diseño responsivo.</p>
+          <a href="proyectos/evento/index.html" class="btn">Ver Demo</a>
+        </div>
+        <div class="card proyecto">
+          <h3>Mini YouTube (JavaScript)</h3>
+          <p>Buscador y visualización de videos simulada con JS, utilizando APIs externas.</p>
+          <a href="proyectos/mini-youtube/index.html" class="btn">Ver Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="contacto">
+    <div class="container">
+      <h2>Contacto</h2>
+      <div class="card">
+        <p><strong>Correo:</strong> emilioalonzo73@gmail.com</p>
+        <p><strong>Ubicación:</strong> Ciudad de Guatemala, Guatemala</p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/EAlonzo73/" target="_blank">github.com/emilioalonzo</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Emilio Alonzo. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    ScrollReveal().reveal('.container', { delay: 200, distance: '50px', origin: 'bottom', reset: false });
+    ScrollReveal().reveal('.card', { interval: 200 });
+  </script>
 </body>
 </html>
