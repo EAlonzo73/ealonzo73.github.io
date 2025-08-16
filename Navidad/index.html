@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="style.css">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RQ5LBHRD0"></script>
 <script>
@@ -12,63 +14,189 @@
   gtag('config', 'G-8RQ5LBHRD0');
 </script>
   
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cuenta Regresiva para Navidad</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&display=swap');
+<title>Ya casi es Navidad</title>
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Playfair Display', serif;
-      background: #f8f1e4;
-      background-image: url('https://www.transparenttextures.com/patterns/white-wall-3.png');
-      color: #5e1a1a;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      padding: 2rem;
-      box-sizing: border-box;
-    }
-
-    h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3.5rem;
-      color: #8b0000;
-      margin-bottom: 0.5em;
-      text-shadow: 1px 1px 1px #e6cfa7;
-    }
-
-    #contador {
-      font-size: 1.8rem;
-      background: rgba(255, 255, 255, 0.7);
-      padding: 1em 2em;
-      border-radius: 15px;
-      border: 3px solid #cbb279;
-      box-shadow: 0 0 15px rgba(139, 0, 0, 0.2);
-      color: #4b1d1d;
-    }
-
-    footer {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #7b5e3b;
-    }
-  </style>
 </head>
 <body>
 
-  <h1>🎁 ¡Navidad se acerca! 🎁</h1>
+       
+<h1> ¡Navidad se acerca! </h1>
   <div id="contador">Cargando...</div>
 
-  <footer>Una cuenta regresiva con espíritu navideño ✨</footer>
 
-  <script>
-    function actualizarContador() {
+ <div class="aurora"></div>
+ <div class="stars"></div>
+
+ <div class="ui" aria-hidden="true">
+ 
+ </div>
+
+ <div class="horizon"></div>
+
+
+ <div class="ground" aria-hidden="true">
+  <div class="snow-drift"></div>
+  <img 
+   <div class="star"></div>
+  </div>
+
+
+
+
+
+
+  
+  <div onload="run();">
+        <canvas id="canvas" width="100vw" height="100vh"></canvas>
+          <div class="scene-tree">
+        <svg version="1.1" id="tree" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 125.8 180" style="enable-background:new 0 0 125.8 180;" xml:space="preserve">
+            <style type="text/css">
+                .st0{fill:#332C28;}
+                .st1{fill:#00513E;}
+                .st2{fill:#003828;}
+                .st3{fill:#E7B75C;}
+                .st4{fill:#B28947;}
+            </style>
+            <g>
+                <g>
+                    <rect x="55.9" y="135" class="st0" width="13.7" height="45"/>
+                    <polygon class="st1" points="24,84.3 37.5,81.3 14.9,121.7 28.8,118.6 0,170.3 62.6,156.1 62.6,15.3 		"/>
+                    <polygon class="st2" points="125.8,170.3 96.9,118.6 110.9,121.7 88.2,81.3 101.7,84.3 62.8,14.9 62.6,15.3 62.6,156.1 62.8,156 
+                        "/>
+                </g>
+                <g id="lights">
+                    <g id="blue-lt">
+                        <circle class="blue-lt g1" cx="70.2" cy="134.7" r="3.7"/>
+                        <circle class="blue-lt g3" cx="23.1" cy="147.5" r="4.2"/>
+                        <circle class="blue-lt g1" cx="59.3" cy="116.9" r="5.8"/>
+                    </g>
+                    <g id="blue-dk">
+                        <circle class="blue-dk g3" cx="77.1" cy="55.3" r="4.8"/>
+                        <circle class="blue-dk g1" cx="98.6" cy="148.6" r="4.5"/>
+                        <circle class="blue-dk g2" cx="62.7" cy="80.2" r="4.4"/>
+                    </g>
+                    <g id="red">
+                        <circle class="red g1" cx="37" cy="125.3" r="5.9"/>
+                        <circle class="red g1" cx="78.2" cy="95.2" r="5.7"/>
+                        <circle class="red g2" cx="54.8" cy="144.2" r="3.4"/>
+                        <circle class="red g2" cx="59.8" cy="44.2" r="5.2"/>
+                    </g>
+                    <g id="gold-lt">
+                        <circle class="gold-lt g1" cx="51.7" cy="64.8" r="5.7"/>
+                        <circle class="gold-lt g2" cx="39.5" cy="140.4" r="4.4"/>
+                    </g>
+                    <g id="gold-dk">
+                        <circle class="gold-dk g2" cx="76.9" cy="76.7" r="4.4"/>
+                        <circle class="gold-dk g3" cx="83.9" cy="125.3" r="4.8"/>
+                        <circle class="gold-dk g3" cx="46" cy="99.6" r="4.0"/>
+                    </g>
+                </g>
+                <polygon class="st3" points="59.1,10.5 48,10.5 57.1,17.1 53.6,27.6 62.6,21.1 62.6,0 	"/>
+                <polygon class="st4" points="77.1,10.5 66,10.5 62.6,0 62.6,21.1 71.6,27.6 68.2,17.1 	"/>
+            </g>
+        </svg>
+        </div>
+      </div>
+
+  <div class="scene-igloo">
+      <div class="igloo-scene">
+  <div class="igloo">
+    <div class="chimney"></div>
+    <div class="door">
+      <span class="door-hole"></span>
+      <span class="door-shadow"></span>
+    </div>
+  </div>
+</div></div>
+
+
+
+  <div class="scene-penguins">
+ 
+ 
+  <div class="penguin p1 walk" aria-label="Pingüino 1">
+  <div class="body">
+   <div class="belly"></div>
+  </div>
+  <div class="head">
+   <div class="face">
+    <div class="eye left"></div>
+    <div class="eye right"></div>
+    <div class="beak"></div>
+   </div>
+  </div>
+  <div class="wing left"></div>
+  <div class="wing right"></div>
+  <div class="foot left"></div>
+  <div class="foot right"></div>
+ </div>
+
+ <div class="penguin p2 walk" aria-label="Pingüino 2">
+  <div class="body"><div class="belly"></div></div>
+  <div class="head"><div class="face"><div class="eye left"></div><div class="eye right"></div><div class="beak"></div></div></div>
+  <div class="wing left"></div><div class="wing right"></div>
+  <div class="foot left"></div><div class="foot right"></div>
+ </div>
+
+ <div class="penguin p3 walk" aria-label="Pingüino 3">
+  <div class="body"><div class="belly"></div></div>
+  <div class="head"><div class="face"><div class="eye left"></div><div class="eye right"></div><div class="beak"></div></div></div>
+  <div class="wing left"></div><div class="wing right"></div>
+  <div class="foot left"></div><div class="foot right"></div>
+ </div>
+ </div>
+
+
+
+
+<script>
+ // Small snow generator (lightweight)
+ const maxFlakes = 40;
+ function makeFlake(){
+  const f = document.createElement('div');
+  f.className = 'flake';
+  const size = 2 + Math.random()*8;
+  f.style.width = size + 'px';
+  f.style.height = size + 'px';
+  f.style.left = (Math.random()*100) + 'vw';
+  const duration = 4 + Math.random()*6;
+  f.style.opacity = 0.6 + Math.random()*0.4;
+  f.style.transform = `translateY(0) rotate(${Math.random()*360}deg)`;
+  f.style.transition = `transform ${duration}s linear, top ${duration}s linear, left ${duration}s linear, opacity ${duration}s linear`;
+  document.body.appendChild(f);
+  requestAnimationFrame(()=>{
+   f.style.top = (100 + Math.random()*10) + 'vh';
+   const drift = (Math.random()-0.5)*20;
+   f.style.left = `calc(${f.style.left} + ${drift}vw)`;
+   f.style.opacity = 0.0;
+  });
+  setTimeout(()=> f.remove(), (duration+0.5)*1000);
+ }
+ // Create a gentle continuous snowfall
+ setInterval(()=>{
+  if (document.querySelectorAll('.flake').length < maxFlakes) makeFlake();
+ }, 300);
+
+ // Slight random offsets to penguins for "natural" stance (once load)
+ document.querySelectorAll('.penguin').forEach((p, i)=>{
+  const delay = (i%3)*120;
+  p.style.animationDelay = `${delay}ms`;
+  // small lateral float to simulate walking across snow
+  const drift = (Math.random()*20-10);
+  p.style.left = (parseFloat(getComputedStyle(p).left) + drift) + 'px';
+ });
+
+ // Optional: click penguin to make it "hop"
+ document.querySelectorAll('.penguin').forEach(p=>{
+  p.addEventListener('click', ()=>{
+   p.style.transition='transform 0.25s';
+   p.style.transform += ' translateY(-18px)';
+   setTimeout(()=>{ p.style.transform = p.style.transform.replace(' translateY(-18px)','') }, 300);
+  });
+ });
+
+
+ function actualizarContador() {
       const ahora = new Date();
       let navidad = new Date(ahora.getFullYear(), 11, 25, 0, 0, 0);
 
@@ -92,7 +220,10 @@
 
     actualizarContador();
     setInterval(actualizarContador, 1000);
-  </script>
 
+</script>
 </body>
 </html>
+
+
+
