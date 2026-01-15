@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Un acre en la Luna</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
@@ -11,11 +11,11 @@
       background: radial-gradient(circle at top, #111218, #000);
       color: #e6e6e6;
       font-family: system-ui, -apple-system, BlinkMacSystemFont;
-      line-height: 1.55;
+      line-height: 1.45;
     }
 
     header {
-      padding: 70px 20px 50px;
+      padding: 60px 20px 40px;
       text-align: center;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
@@ -28,7 +28,7 @@
 
     header span {
       display: block;
-      margin-top: 12px;
+      margin-top: 10px;
       font-size: 0.9rem;
       color: #9b9b9b;
       letter-spacing: 2px;
@@ -37,48 +37,69 @@
     section {
       max-width: 880px;
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 50px 20px;
     }
 
     h2 {
       font-weight: 300;
       letter-spacing: 2px;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       text-transform: uppercase;
     }
 
     p {
-      margin-bottom: 18px;
+      margin-bottom: 14px;
       color: #dcdcdc;
     }
 
     .divider {
       height: 1px;
       background: rgba(255,255,255,0.08);
-      margin: 50px 0;
+      margin: 40px 0;
     }
 
     #scene-container {
       width: 100%;
       height: 520px;
-      margin: 35px 0;
+      position: relative;
     }
 
-    .caption {
-      text-align: center;
+    #tooltip {
+      position: absolute;
+      padding: 6px 12px;
+      background: rgba(0,0,0,0.75);
+      color: #fff;
       font-size: 0.85rem;
-      color: #9b9b9b;
-      margin-top: 12px;
+      border-radius: 4px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      white-space: nowrap;
     }
 
     footer {
       border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 45px 20px;
+      padding: 40px 20px;
       text-align: center;
-      font-size: 0.85rem;
-      color: #cfcfcf;
-      letter-spacing: 1px;
+      font-size: 0.9rem;
+      color: #d0d0d0;
     }
+
+    .texto-homenaje p {
+  margin-bottom: 14px;
+}
+
+.texto-homenaje .bloque-final {
+  margin-top: 24px;
+}
+
+.texto-homenaje .cierre {
+  margin-top: 28px;
+  font-weight: 500;
+}
+
+
+    
   </style>
 </head>
 
@@ -86,93 +107,222 @@
 
 <header>
   <h1>UN ACRE EN LA LUNA</h1>
-  <span>Homenaje</span>
+  <span>Para siempre</span>
 </header>
 
-<section>
-  <h2>La Luna y Ella</h2>
-
-  <p>Desde que tengo memoria, mi mamá me enseñó a mirar hacia arriba.</p>
+<section class="texto-homenaje">
 
   <p>
-    “¿Ya viste la luna?”<br>
-    “Qué bonita está la luna hoy.”<br>
-    “Hoy se ve bien grande la luna.”
+    Desde la muerte de mi madre, hay muchas cosas que me la recuerdan.
+    Algunas aparecen sin avisar.
+    Otras se esconden en lo cotidiano.
   </p>
 
   <p>
-    No eran frases sueltas. Eran invitaciones a detener el día.
-    A levantar la vista. A recordar que siempre hay algo ahí,
-    incluso cuando no se puede tocar.
+    Pero hay una que es imposible ignorar.
+    La más evidente de todas.
+    La Luna.
   </p>
 
   <p>
-    Hay cosas que no se guardan en papeles ni en bóvedas.
-    Cosas que no se poseen, porque siempre han estado ahí.
+    Recuerdo perfectamente cómo me la señalaba, casi como un ritual.
+    “¿Ya viste la luna hoy?”
+    “Qué bonita está la luna hoy.”
+    “Si salís mirala… está bien linda.”
   </p>
 
   <p>
-    Yo la veo todas las noches.
-    Y cada vez que la miro, inevitablemente, pienso en ella.
+    No era una conversación.
+    Era una invitación.
+    Una manera silenciosa de compartir algo sin necesidad de explicarlo.
   </p>
 
   <p>
-    Este gesto no intenta apropiarse de nada.
-    Es solo una forma de decir que,
-    en algún punto del cielo que compartimos,
-    hay un lugar que lleva su nombre.
+    Hoy, cada vez que miro la Luna, algo se me aprieta en el pecho.
+    Me vuelve sensible.
+    Me vuelve pequeño.
+    Me devuelve a esos momentos donde todo parecía más simple, más seguro, más entero.
   </p>
+
+  <p>
+    Desde que la perdí, hay algo que me cuesta aceptar.
+    Me duele profundamente que el único gesto que parezca permitido sea llevar flores.
+    Flores que se marchitan.
+    Flores que duran unos días y después desaparecen,
+    como si el amor también tuviera fecha de caducidad.
+  </p>
+
+  <p>
+    Y yo no quería eso para ella.
+  </p>
+
+  <p>
+    Por eso hoy, en lo que hubiera sido su cumpleaños, decidí hacer algo distinto.
+    Decidí no regalar flores.
+    Decidí regalar permanencia.
+  </p>
+
+  <p>
+    Desde hoy, hay un pedacito de la Luna —un acre, en realidad— que lleva su nombre.
+    Un lugar que no se marchita.
+    Un lugar que no se apaga.
+    Un lugar que siempre está ahí, incluso cuando no lo vemos.
+  </p>
+
+  <p>
+    Ahora, cada noche que mire al cielo, sabré que no estoy solo.
+    Que de alguna forma, ella sigue conmigo.
+    Que sigue habitando ese mismo lugar al que tantas veces me enseñó a mirar.
+  </p>
+
+  <p class="bloque-final">
+    Tal vez no pueda hablarle como antes.<br>
+    Tal vez no pueda contarle cómo estuvo mi día,<br>
+    ni preguntarle si ya vio la Luna hoy.
+  </p>
+
+  <p class="bloque-final">
+    Pero puedo levantar la vista.<br>
+    Puedo buscarla en ese silencio brillante.<br>
+    Y recordar que, incluso en la ausencia,<br>
+    siempre habrá algo que sea nuestro.
+  </p>
+
+  <p class="cierre">
+    No sé si a mi lado.<br>
+    No sé si hasta París.<br>
+    O si un poco más lejos, hacia la Luna.
+  </p>
+
+  <p class="cierre">
+    Pero te mando un abrazo, mamá.<br>
+    Te quiero mucho.
+  </p>
+
 </section>
+
 
 <div class="divider"></div>
 
 <section>
-  <h2>El Punto</h2>
+  <h2>Un Punto en el Cielo</h2>
 
   <p>
-    Puedes mover la Luna con el cursor.
-    El corazón blanco marca, de forma simbólica,
-    un punto cualquiera.
   </p>
 
-  <div id="scene-container"></div>
+  <p>
+    Un lugar que existe para ser recordado.
+  </p>
 
-  <div class="caption">
-    Un punto entre millones. Como todos los recuerdos que importan.
+
+
+  <div id="scene-container">
+    <div id="tooltip">Lucy Hernández</div>
   </div>
 </section>
 
-<div class="divider"></div>
 
-<section>
-  <h2>Sobre la validez simbólica</h2>
+<section class="texto-validez">
 
   <p>
-    En 1980, Dennis Hope registró una reclamación simbólica
-    de cuerpos celestes y notificó a la NASA
-    y a la entonces Unión Soviética.
+    Hay quien pregunta por qué pagar dinero real
+    por algo que no se puede pisar.
+    La respuesta corta es simple:
+    porque no todo se compra para usarse.
+    Algunas cosas se compran para contarse.
   </p>
 
   <p>
-    No existió oposición formal.
+    La historia empieza con un hombre llamado
+    <a href="https://lunarembassy.com/" target="_blank" rel="noopener noreferrer">
+      Dennis Hope
+    </a>.
+    Dicen que fracasó más veces de las que tuvo éxito.
+    Y dicen que una noche, sin demasiado futuro y con más preguntas que certezas,
+    levantó la vista y vio la Luna como la ven los que todavía creen:
+    llena de posibilidades.
   </p>
 
   <p>
-    Este acto debe entenderse como un gesto personal,
-    conmemorativo y humano.
+    Dennis hizo algo que a nadie se le había ocurrido hacer antes.
+    Escribió cartas.
+    Muchas cartas.
+    A la NASA, a gobiernos, a la Unión Soviética.
+    Avisó que iba a registrar la Luna a su nombre.
+    Esperó una respuesta.
+    No llegó ninguna.
   </p>
+
+  <p>
+    A veces, el silencio también es una forma de permiso.
+  </p>
+
+  <p>
+    Con el tiempo, Dennis empezó a ofrecer pequeños terrenos lunares.
+    No prometía riquezas.
+    No prometía casas.
+    Prometía un punto en el cielo y una historia para acompañarlo.
+  </p>
+
+  <p>
+    Algunos lo llamaron estafador.
+    Otros, loco.
+    Yo no le compré una mentira.
+    Le compré un relato.
+  </p>
+
+  <p>
+    Canjeé dinero —un papel que representa algo guardado en una bóveda
+    que nunca veré—
+    por otro papel que representa un lugar
+    que sí puedo mirar todas las noches.
+  </p>
+
+  <p>
+    Dennis y yo hicimos un trato justo.
+    Él me dio una historia.
+    Y yo encontré una forma distinta de recordar a mi madre.
+  </p>
+
+  <p>
+    Porque hay recuerdos que no entran en un ramo de flores.
+    Hay ausencias que necesitan algo más grande.
+    Algo que no se marchite.
+    Algo que vuelva cada noche.
+  </p>
+
+  <p>
+    La Luna siempre vuelve.
+  </p>
+
+  <p>
+    Y ahora, cada vez que aparece,
+    no solo la miro.
+    La reconozco.
+  </p>
+
+  <p style="margin-top:40px; font-size:0.65rem; opacity:0.35;">
+    Inspirado en el cuento de Hernán Casciari —
+    <a href="https://hernancasciari.com/blog/la-luna-por-veinte-dolares/"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="color:inherit; text-decoration:none;">
+      La luna por veinte dólares
+    </a>
+  </p>
+
 </section>
+
 
 <footer>
   Con mucho amor para Lucy Hernández
 </footer>
 
-<!-- THREE.JS MODERNO -->
 <script type="module">
   import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
-  import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js";
 
   const container = document.getElementById("scene-container");
+  const tooltip = document.getElementById("tooltip");
 
   const scene = new THREE.Scene();
 
@@ -182,22 +332,17 @@
     0.1,
     1000
   );
-
   camera.position.z = 7;
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(container.clientWidth, container.clientHeight);
   container.appendChild(renderer.domElement);
 
-  const controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
-  controls.enableZoom = false;
+  scene.add(new THREE.AmbientLight(0x404040));
 
   const light = new THREE.DirectionalLight(0xffffff, 1);
   light.position.set(5, 3, 5);
   scene.add(light);
-
-  scene.add(new THREE.AmbientLight(0x404040));
 
   const moonTexture = new THREE.TextureLoader().load(
     "https://threejs.org/examples/textures/planets/moon_1024.jpg"
@@ -207,10 +352,9 @@
     new THREE.SphereGeometry(2.6, 64, 64),
     new THREE.MeshStandardMaterial({ map: moonTexture })
   );
-
   scene.add(moon);
 
-  // ❤️ Corazón blanco
+  // Corazón blanco
   const heartShape = new THREE.Shape();
   heartShape.moveTo(0, 0.3);
   heartShape.bezierCurveTo(0, 0.3, -0.5, 0.8, -1, 0.3);
@@ -223,11 +367,11 @@
     new THREE.MeshBasicMaterial({ color: 0xffffff })
   );
 
-  heart.scale.set(0.12, 0.12, 0.12);
+  heart.scale.set(0.144, 0.144, 0.144);
 
-  const phi = Math.acos(2 * Math.random() - 1);
-  const theta = Math.random() * Math.PI * 2;
-  const r = 2.62;
+  const phi = Math.PI / 3;
+  const theta = Math.PI / 4;
+  const r = 2.65;
 
   heart.position.set(
     r * Math.sin(phi) * Math.cos(theta),
@@ -238,9 +382,29 @@
   heart.lookAt(heart.position.clone().multiplyScalar(2));
   moon.add(heart);
 
+  const raycaster = new THREE.Raycaster();
+  const mouse = new THREE.Vector2();
+
+  renderer.domElement.addEventListener("mousemove", (event) => {
+    const rect = renderer.domElement.getBoundingClientRect();
+    mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+    const hit = raycaster.intersectObject(heart);
+
+    if (hit.length) {
+      tooltip.style.opacity = 1;
+      tooltip.style.left = event.clientX - rect.left + 10 + "px";
+      tooltip.style.top = event.clientY - rect.top + 10 + "px";
+    } else {
+      tooltip.style.opacity = 0;
+    }
+  });
+
   function animate() {
     requestAnimationFrame(animate);
-    controls.update();
+    moon.rotation.y += 0.0025;
     renderer.render(scene, camera);
   }
 
