@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Configuración básica del documento -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introducción a los Sistemas de Cómputo - UMG</title>
+
+  <!-- Fuentes de Google: Syne para títulos, DM Sans para texto normal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Iconos de Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ============================================
+       VARIABLES Y RESET GENERAL
+    ============================================ */
+    :root {
+      --azul-oscuro:   #0f172a;   /* color principal de fondo oscuro */
+      --azul-medio:    #1e3a5f;   /* fondo de secciones secundarias */
+      --azul-claro:    #3b82f6;   /* color de acento / botones */
+      --celeste:       #7dd3fc;   /* color de acento secundario */
+      --blanco:        #f8fafc;   /* texto principal */
+      --gris-texto:    #94a3b8;   /* texto secundario */
+      --tarjeta-bg:    #1e293b;   /* fondo de tarjetas */
+      --borde:         rgba(59,130,246,0.2); /* color de bordes sutiles */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth; /* desplazamiento suave al hacer clic en el menú */
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--azul-oscuro);
+      color: var(--blanco);
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       BARRA DE NAVEGACIÓN SUPERIOR
+    ============================================ */
+    nav {
+      position: fixed;          /* fija la barra al hacer scroll */
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(12px);  /* efecto de vidrio esmerilado */
+      border-bottom: 1px solid var(--borde);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+    }
+
+    /* Logo en la barra de navegación */
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--celeste);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    /* Contenedor de los enlaces del menú */
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      list-style: none;
+    }
+
+    /* Cada enlace del menú */
+    .nav-links a {
+      color: var(--gris-texto);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    /* Estado hover de los enlaces del menú */
+    .nav-links a:hover {
+      color: var(--blanco);
+      background: rgba(59,130,246,0.15);
+    }
+
+    /* Botón de menú hamburguesa (solo visible en móvil) */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--blanco);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    /* ============================================
+       SECCIÓN HERO / PORTADA PRINCIPAL
+    ============================================ */
+    #inicio {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Fondo con gradiente animado detrás del hero */
+    #inicio::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(59,130,246,0.25) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(125,211,252,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Contenido centrado del hero */
+    .hero-contenido {
+      position: relative;
+      max-width: 780px;
+    }
+
+    /* Etiqueta pequeña sobre el título */
+    .hero-etiqueta {
+      display: inline-block;
+      background: rgba(59,130,246,0.15);
+      border: 1px solid rgba(59,130,246,0.4);
+      color: var(--celeste);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    /* Título principal del hero */
+    .hero-titulo {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    /* Parte del título resaltada en azul */
+    .hero-titulo span {
+      color: var(--azul-claro);
+    }
+
+    /* Subtítulo descriptivo */
+    .hero-subtitulo {
+      font-size: 1.05rem;
+      color: var(--gris-texto);
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+
+    /* Información del estudiante debajo del subtítulo */
+    .hero-info {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    /* Cada dato del estudiante */
+    .hero-dato {
+      background: var(--tarjeta-bg);
+      border: 1px solid var(--borde);
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      color: var(--gris-texto);
+    }
+
+    /* Nombre del dato en negrita y más claro */
+    .hero-dato strong {
+      display: block;
+      color: var(--blanco);
+      font-size: 0.9rem;
+    }
+
+    /* Botones de llamada a la acción */
+    .hero-botones {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Botón principal (relleno azul) */
+    .btn-primario {
+      background: var(--azul-claro);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primario:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+    }
+
+    /* Botón secundario (solo borde) */
+    .btn-secundario {
+      border: 1px solid var(--borde);
+      color: var(--gris-texto);
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secundario:hover {
+      border-color: var(--azul-claro);
+      color: var(--blanco);
+    }
+
+    /* ============================================
+       ESTILOS GENERALES PARA SECCIONES
+    ============================================ */
+    section {
+      padding: 80px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Encabezado reutilizable para cada sección */
+    .seccion-encabezado {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    /* Número o etiqueta pequeña sobre el título de sección */
+    .seccion-numero {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--azul-claro);
+      margin-bottom: 12px;
+    }
+
+    /* Título de cada sección */
+    .seccion-titulo {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    /* Descripción debajo del título de sección */
+    .seccion-desc {
+      color: var(--gris-texto);
+      font-size: 1rem;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    /* ============================================
+       TARJETAS DE TEMAS DEL CURSO
+    ============================================ */
+    .temas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    /* Tarjeta individual de cada tema */
+    .tarjeta-tema {
+      background: var(--tarjeta-bg);
+      border: 1px solid var(--borde);
+      border-radius: 14px;
+      padding: 28px;
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+
+    /* Efecto hover en tarjeta: sube ligeramente y cambia borde */
+    .tarjeta-tema:hover {
+      transform: translateY(-4px);
+      border-color: rgba(59,130,246,0.5);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    /* Encabezado dentro de cada tarjeta (ícono + módulo) */
+    .tarjeta-encabezado {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    /* Ícono circular de cada tarjeta */
+    .tarjeta-icono {
+      width: 44px;
+      height: 44px;
+      background: rgba(59,130,246,0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--celeste);
+      flex-shrink: 0;
+    }
+
+    /* Módulo al que pertenece el tema */
+    .tarjeta-modulo {
+      font-size: 0.72rem;
+      color: var(--azul-claro);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Título del tema dentro de la tarjeta */
+    .tarjeta-titulo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    /* Texto explicativo del tema */
+    .tarjeta-texto {
+      color: var(--gris-texto);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    /* Etiquetas de conceptos clave debajo del texto */
+    .tarjeta-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+    }
+
+    /* Etiqueta individual de concepto */
+    .tag {
+      background: rgba(59,130,246,0.1);
+      color: var(--celeste);
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(59,130,246,0.2);
+    }
+
+    /* ============================================
+       SECCIÓN DE RECURSOS MULTIMEDIA
+    ============================================ */
+    #recursos {
+      background: var(--azul-medio);
+      max-width: 100%;
+      padding: 80px 0;
+    }
+
+    /* Contenedor interno con ancho limitado */
+    .recursos-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Grid de tarjetas de recursos */
+    .recursos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* Tarjeta de recurso multimedia */
+    .recurso-tarjeta {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--borde);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.25s ease;
+    }
+
+    .recurso-tarjeta:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Área de miniatura del video/recurso */
+    .recurso-thumb {
+      width: 100%;
+      height: 160px;
+      background: var(--azul-oscuro);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--azul-claro);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Gradiente decorativo en la miniatura */
+    .recurso-thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(59,130,246,0.15), transparent 70%);
+    }
+
+    /* Información textual del recurso */
+    .recurso-info {
+      padding: 18px 20px;
+    }
+
+    /* Etiqueta de tipo de recurso (Video, Artículo, etc.) */
+    .recurso-tipo {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--celeste);
+      margin-bottom: 6px;
+    }
+
+    /* Título del recurso */
+    .recurso-titulo {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    /* Descripción del recurso */
+    .recurso-desc {
+      color: var(--gris-texto);
+      font-size: 0.85rem;
+    }
+
+    /* Enlace del recurso */
+    .recurso-enlace {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--azul-claro);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      margin-top: 12px;
+      transition: gap 0.2s ease;
+    }
+
+    .recurso-enlace:hover {
+      gap: 10px;
+    }
+
+    /* ============================================
+       SECCIÓN SOBRE EL USO DE IA
+    ============================================ */
+    .ia-contenedor {
+      background: var(--tarjeta-bg);
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* Parte izquierda del bloque de IA */
+    .ia-texto h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .ia-texto p {
+      color: var(--gris-texto);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    /* Lista de herramientas de IA utilizadas */
+    .ia-herramientas {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Cada herramienta en la lista */
+    .ia-herramientas li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(59,130,246,0.08);
+      border: 1px solid var(--borde);
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 0.88rem;
+    }
+
+    /* Ícono de cada herramienta */
+    .ia-herramientas li i {
+      color: var(--celeste);
+      font-size: 1rem;
+      width: 16px;
+    }
+
+    /* ============================================
+       SECCIÓN DE CONCLUSIÓN / CIERRE
+    ============================================ */
+    .conclusion-box {
+      background: linear-gradient(135deg, rgba(30,58,95,0.8), rgba(30,41,59,0.8));
+      border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 16px;
+      padding: 48px 40px;
+      text-align: center;
+    }
+
+    .conclusion-box h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .conclusion-box p {
+      color: var(--gris-texto);
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       PIE DE PÁGINA
+    ============================================ */
+    footer {
+      background: #060d1a;
+      border-top: 1px solid var(--borde);
+      text-align: center;
+      padding: 28px 20px;
+      color: var(--gris-texto);
+      font-size: 0.82rem;
+    }
+
+    footer a {
+      color: var(--azul-claro);
+      text-decoration: none;
+    }
+
+    /* ============================================
+       DIVISOR DECORATIVO ENTRE SECCIONES
+    ============================================ */
+    .divisor {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--borde), transparent);
+      margin: 0 auto;
+    }
+
+    /* ============================================
+       DISEÑO RESPONSIVO PARA MÓVILES
+    ============================================ */
+    @media (max-width: 768px) {
+
+      /* Mostrar botón de hamburguesa en móvil */
+      .menu-toggle {
+        display: block;
+      }
+
+      /* Ocultar los enlaces del menú en móvil por defecto */
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.98);
+        flex-direction: column;
+        padding: 20px;
+        gap: 4px;
+        border-bottom: 1px solid var(--borde);
+      }
+
+      /* Mostrar el menú cuando está activo */
+      .nav-links.activo {
+        display: flex;
+      }
+
+      /* Ajuste de padding en la navegación para móvil */
+      nav {
+        padding: 0 20px;
+      }
+
+      /* Reducir padding de secciones en móvil */
+      section {
+        padding: 60px 20px;
+      }
+
+      /* La cuadrícula de IA pasa a una columna en móvil */
+      .ia-contenedor {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      /* Cuadros del pie de hero apilados en móvil */
+      .hero-info {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Ajuste del padding interno de recursos en móvil */
+      .recursos-inner {
+        padding: 0 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       BARRA DE NAVEGACIÓN FIJA
+  ============================================ -->
+  <nav>
+    <!-- Logo / nombre del sitio -->
+    <a href="#inicio" class="nav-logo">ISC · UMG</a>
+
+    <!-- Botón hamburguesa visible solo en móvil -->
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Lista de enlaces de navegación -->
+    <ul class="nav-links" id="menuNav">
+      <li><a href="#inicio"    onclick="cerrarMenu()">Inicio</a></li>
+      <li><a href="#temas"     onclick="cerrarMenu()">Temas</a></li>
+      <li><a href="#recursos"  onclick="cerrarMenu()">Recursos</a></li>
+      <li><a href="#ia"        onclick="cerrarMenu()">IA</a></li>
+      <li><a href="#conclusion" onclick="cerrarMenu()">Conclusión</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ============================================
+       SECCIÓN 1: PORTADA / HERO
+  ============================================ -->
+  <section id="inicio" style="padding-top:120px;">
+    <div class="hero-contenido">
+
+      <!-- Etiqueta superior -->
+      <span class="hero-etiqueta">Universidad Mariano Gálvez · 2025</span>
+
+      <!-- Título principal -->
+      <h1 class="hero-titulo">
+        Introducción a los<br>
+        <span>Sistemas de Cómputo</span>
+      </h1>
+
+      <!-- Subtítulo / descripción general del proyecto -->
+      <p class="hero-subtitulo">
+        Texto paralelo digital del curso. Una recopilación organizada de los principales
+        temas estudiados durante el semestre, presentados de forma visual e interactiva.
+      </p>
+
+      <!-- Datos del estudiante y del curso -->
+      <div class="hero-info">
+        <div class="hero-dato">
+          <strong>Curso</strong>
+          Introducción a los Sistemas de Cómputo
+        </div>
+        <div class="hero-dato">
+          <strong>Centro</strong>
+          C.U. Villa Nueva
+        </div>
+        <div class="hero-dato">
+          <strong>Ciclo</strong>
+          2025
+        </div>
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="hero-botones">
+        <a href="#temas" class="btn-primario">Ver contenidos</a>
+        <a href="#recursos" class="btn-secundario">Recursos multimedia</a>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divisor"></div>
+
+
+  <!-- ============================================
+       SECCIÓN 2: TEMAS DEL CURSO
+  ============================================ -->
+  <section id="temas">
+
+    <!-- Encabezado de la sección -->
+    <div class="seccion-encabezado">
+      <p class="seccion-numero">02 · Contenido del curso</p>
+      <h2 class="seccion-titulo">Temas estudiados en el semestre</h2>
+      <p class="seccion-desc">Resumen de los módulos vistos durante el curso, organizados por unidad temática.</p>
+    </div>
+
+    <!-- Cuadrícula de tarjetas de temas -->
+    <div class="temas-grid">
+
+      <!-- ── TARJETA 1: Historia de la Computadora ── -->
+      <div class="tarjeta-tema">
+        <div class="tarjeta-encabezado">
+          <div class="tarjeta-icono"><i class="fas fa-clock-rotate-left"></i></div>
+          <span class="tarjeta-modulo">Módulo 1</span>
+        </div>
+        <h3 class="tarjeta-titulo">Historia de la Computadora</h3>
+        <p class="tarjeta-texto">
+          La computadora ha evolucionado desde enormes máquinas mecánicas del siglo XIX
+          hasta los dispositivos portátiles actuales. Esta evolución se divide en generaciones:
+          las primeras usaban tubos de vacío (1940s), luego transistores, circuitos integrados,
+          microprocesadores y hoy en día inteligencia artificial. Cada generación trajo
+          mayor velocidad, menor tamaño y menor costo.
+        </p>
+        <div class="tarjeta-tags">
+          <span class="tag">ENIAC</span>
+          <span class="tag">Generaciones</span>
+          <span class="tag">Von Neumann</span>
+        </div>
+      </div>
+
+      <!-- ── TARJETA 2: Hardware ── -->
+      <div class="tarjeta-tema">
+        <div class="tarjeta-encabezado">
+          <div class="tarjeta-icono"><i class="fas fa-microchip"></i></div>
+          <span class="tarjeta-modulo">Módulo 1</span>
+        </div>
+        <h3 class="tarjeta-titulo">Hardware</h3>
+        <p class="tarjeta-texto">
+          El hardware son todos los componentes físicos de una computadora. Se divide en
+          dispositivos de entrada (teclado, ratón), procesamiento (CPU, RAM), almacenamiento
+          (disco duro, SSD) y salida (monitor, impresora). La CPU es el "cerebro" que ejecuta
+          instrucciones, mientras que la RAM almacena datos de uso temporal para mayor velocidad.
+        </p>
+        <div class="tarjeta-tags">
+          <span class="tag">CPU</span>
+          <span class="tag">RAM</span>
+          <span class="tag">SSD</span>
+          <span class="tag">Periféricos</span>
+        </div>
+      </div>
+
+      <!-- ── TARJETA 3: Arquitectura de Computadoras ── -->
+      <div class="tarjeta-tema">
+        <div class="tarjeta-encabezado">
+          <div class="tarjeta-icono"><i class="fas fa-sitemap"></i></div>
+          <span class="tarjeta-modulo">Módulo 1</span>
+        </div>
+        <h3 class="tarjeta-titulo">Arquitectura de Computadoras</h3>
+        <p class="tarjeta-texto">
+          La arquitectura de computadoras describe cómo están organizados e interconectados
+          los componentes internos. El modelo más conocido es el de Von Neumann, que separa
+          la memoria de los datos y las instrucciones. Define conceptos como el bus de datos,
+          la ALU (Unidad Aritmético-Lógica), registros y ciclos de instrucción (fetch-decode-execute).
+        </p>
+        <div class="tarjeta-tags">
+          <span class="tag">Von Neumann</span>
+          <span class="tag">ALU</span>
+          <span class="tag">Bus</span>
+        </div>
+      </div>
+
+      <!-- ── TARJETA 4: Hardware y Software ── -->
+      <div class="tarjeta-tema">
+        <div class="tarjeta-encabezado">
+          <div class="tarjeta-icono"><i class="fas fa-layer-group"></i></div>
+          <span class="tarjeta-modulo">Módulo 1</span>
+        </div>
+        <h3 class="tarjeta-titulo">Hardware y Software</h3>
+        <p class="tarjeta-texto">
+          El hardware es la parte física; el software es la parte lógica (programas e instrucciones).
+          El software se clasifica en: software de sistema (sistema operativo), software de aplicación
+          (Word, Chrome) y software de desarrollo (editores de código). Ambos trabajan juntos:
+          el hardware ejecuta lo que el software le indica.
+        </p>
+        <div class="tarjeta-tags">
+          <span class="tag">S. Operativo</span>
+          <span class="tag">Apps</span>
+          <span class="tag">Drivers</span>
+        </div>
+      </div>
+
+      <!-- ── TARJETA 5: Sistema Operativo ── -->
+      <div class="tarjeta-tema">
+        <div class="tarjeta-encabezado">
+          <div class="tarjeta-icono"><i class="fas fa-desktop"></i></div>
+          <span class="tarjeta-modulo">Módulo 1</span>
+        </div>
+        <h3 class="tarjeta-titulo">Sistema Operativo</h3>
+        <p class="tarjeta-texto">
+          El sistema operativo (SO) es el software principal que gestiona todos los recursos
+          del equipo y sirve de intermediario entre el usuario y el hardware. Sus funciones
+          incluyen administración de procesos, memoria, archivos y dispositivos de entrada/salida.
+          Los SO más conocidos son Windows, macOS y Linux. En móviles: Android e iOS.
+        </p>
+        <div class="tarjeta-tags">
+          <span class="tag">Windows</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Procesos</span>
+        </div>
+      </div>
+
+      <!-- ── TARJETA 6: Bases de Datos ── -->
+      <div class="tarjeta-tema">
+        <div class="tarjeta-encabezado">
+          <div class="tarjeta-icono"><i class="fas fa-database"></i></div>
+          <span class="tarjeta-modulo">Módulo 1</span>
+        </div>
+        <h3 class="tarjeta-titulo">Introducción a Bases de Datos</h3>
+        <p class="tarjeta-texto">
+          Una base de datos es un conjunto organizado de información estructurada. Los sistemas
+          gestores de bases de datos (SGBD) permiten crear, consultar, modificar y eliminar datos.
+          SQL es el lenguaje estándar para bases de datos relacionales. Las tablas se relacionan
+          mediante claves primarias y foráneas para evitar duplicar información.
+        </p>
+        <div class="tarjeta-tags">
+          <span class="tag">SQL</span>
+          <span class="tag">Tablas</span>
+          <span class="tag">MySQL</span>
+        </div>
+      </div>
+
+      <!-- ── TARJETA 7: Sistemas de Numeración ── -->
+      <div class="tarjeta-tema">
+        <div class="tarjeta-encabezado">
+          <div class="tarjeta-icono"><i class="fas fa-calculator"></i></div>
+          <span class="tarjeta-modulo">Módulo 2</span>
+        </div>
+        <h3 class="tarjeta-titulo">Sistemas de Numeración</h3>
+        <p class="tarjeta-texto">
+          Las computadoras trabajan internamente con el sistema binario (base 2), usando solo
+          0 y 1. También se utilizan el octal (base 8) y hexadecimal (base 16) para representar
+          datos de forma más compacta. Saber convertir entre bases es fundamental: por ejemplo,
+          el número decimal 10 equivale al binario 1010 y al hexadecimal A.
+        </p>
+        <div class="tarjeta-tags">
+          <span class="tag">Binario</span>
+          <span class="tag">Hexadecimal</span>
+          <span class="tag">Conversión</span>
+        </div>
+      </div>
+
+      <!-- ── TARJETA 8: Redes de Computadoras ── -->
+      <div class="tarjeta-tema">
+        <div class="tarjeta-encabezado">
+          <div class="tarjeta-icono"><i class="fas fa-network-wired"></i></div>
+          <span class="tarjeta-modulo">Módulo 2</span>
+        </div>
+        <h3 class="tarjeta-titulo">Introducción a Redes</h3>
+        <p class="tarjeta-texto">
+          Una red de computadoras conecta dispositivos para compartir recursos e información.
+          Las redes se clasifican por tamaño: LAN (red de área local), MAN (metropolitana)
+          y WAN (área amplia, como internet). El protocolo TCP/IP define cómo se transmiten
+          los datos. Cada dispositivo tiene una dirección IP única que lo identifica en la red.
+        </p>
+        <div class="tarjeta-tags">
+          <span class="tag">TCP/IP</span>
+          <span class="tag">LAN / WAN</span>
+          <span class="tag">IP</span>
+        </div>
+      </div>
+
+      <!-- ── TARJETA 9: Seguridad en Redes ── -->
+      <div class="tarjeta-tema">
+        <div class="tarjeta-encabezado">
+          <div class="tarjeta-icono"><i class="fas fa-shield-halved"></i></div>
+          <span class="tarjeta-modulo">Módulo 2</span>
+        </div>
+        <h3 class="tarjeta-titulo">Protocolos de Red y Seguridad LAN</h3>
+        <p class="tarjeta-texto">
+          La seguridad en redes protege la información de accesos no autorizados. Los protocolos
+          como HTTPS, SSH y TLS cifran las comunicaciones. En redes LAN se utilizan firewalls,
+          VLANs y control de acceso para aislar el tráfico. Las amenazas más comunes incluyen
+          phishing, malware y ataques de denegación de servicio (DoS).
+        </p>
+        <div class="tarjeta-tags">
+          <span class="tag">Firewall</span>
+          <span class="tag">HTTPS</span>
+          <span class="tag">VLAN</span>
+        </div>
+      </div>
+
+      <!-- ── TARJETA 10: Desarrollo Web ── -->
+      <div class="tarjeta-tema">
+        <div class="tarjeta-encabezado">
+          <div class="tarjeta-icono"><i class="fas fa-code"></i></div>
+          <span class="tarjeta-modulo">Módulo 3</span>
+        </div>
+        <h3 class="tarjeta-titulo">Desarrollo de Páginas Web</h3>
+        <p class="tarjeta-texto">
+          El desarrollo web utiliza tres tecnologías base: HTML (estructura del contenido),
+          CSS (estilos y diseño visual) y JavaScript (interactividad y comportamiento).
+          HTML usa etiquetas para definir elementos; CSS aplica colores, fuentes y layouts;
+          JavaScript permite animaciones, formularios dinámicos y comunicación con servidores.
+          Este mismo sitio fue construido con esas tres tecnologías.
+        </p>
+        <div class="tarjeta-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </div>
+
+    </div><!-- fin temas-grid -->
+  </section>
+
+  <div class="divisor"></div>
+
+
+  <!-- ============================================
+       SECCIÓN 3: RECURSOS MULTIMEDIA
+  ============================================ -->
+  <section id="recursos" style="max-width:100%; padding:80px 0;">
+    <div class="recursos-inner">
+
+      <!-- Encabezado de la sección -->
+      <div class="seccion-encabezado">
+        <p class="seccion-numero">03 · Recursos multimedia</p>
+        <h2 class="seccion-titulo">Videos y material de apoyo</h2>
+        <p class="seccion-desc">Recursos visuales que complementan cada tema del curso.</p>
+      </div>
+
+      <!-- Cuadrícula de tarjetas de recursos -->
+      <div class="recursos-grid">
+
+        <!-- Recurso 1: Video sobre historia de la computadora -->
+        <div class="recurso-tarjeta">
+          <div class="recurso-thumb" style="background:linear-gradient(135deg,#1e3a5f,#0f172a);">
+            <i class="fab fa-youtube" style="position:relative;z-index:1;"></i>
+          </div>
+          <div class="recurso-info">
+            <p class="recurso-tipo">Video · YouTube</p>
+            <h4 class="recurso-titulo">Historia de las computadoras explicada</h4>
+            <p class="recurso-desc">Evolución desde las primeras calculadoras mecánicas hasta la inteligencia artificial moderna.</p>
+            <a href="https://www.youtube.com/watch?v=ePUOTidGGRU" target="_blank" class="recurso-enlace">
+              Ver video <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Recurso 2: Video sobre hardware -->
+        <div class="recurso-tarjeta">
+          <div class="recurso-thumb" style="background:linear-gradient(135deg,#1a3a2f,#0f172a);">
+            <i class="fas fa-microchip" style="position:relative;z-index:1;"></i>
+          </div>
+          <div class="recurso-info">
+            <p class="recurso-tipo">Video · YouTube</p>
+            <h4 class="recurso-titulo">Componentes del hardware de una PC</h4>
+            <p class="recurso-desc">Guía visual sobre CPU, RAM, tarjeta madre, almacenamiento y periféricos.</p>
+            <a href="https://www.youtube.com/watch?v=ExxFxD4OSZ0" target="_blank" class="recurso-enlace">
+              Ver video <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Recurso 3: Video sobre sistemas operativos -->
+        <div class="recurso-tarjeta">
+          <div class="recurso-thumb" style="background:linear-gradient(135deg,#2a1a3a,#0f172a);">
+            <i class="fas fa-desktop" style="position:relative;z-index:1;"></i>
+          </div>
+          <div class="recurso-info">
+            <p class="recurso-tipo">Video · YouTube</p>
+            <h4 class="recurso-titulo">¿Qué es un sistema operativo?</h4>
+            <p class="recurso-desc">Explicación clara sobre qué hace un SO y las diferencias entre Windows, Linux y macOS.</p>
+            <a href="https://www.youtube.com/watch?v=pVzRTmdd9j0" target="_blank" class="recurso-enlace">
+              Ver video <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Recurso 4: Video sobre binario -->
+        <div class="recurso-tarjeta">
+          <div class="recurso-thumb" style="background:linear-gradient(135deg,#1a2a3a,#0f172a);">
+            <i class="fas fa-hashtag" style="position:relative;z-index:1;"></i>
+          </div>
+          <div class="recurso-info">
+            <p class="recurso-tipo">Video · YouTube</p>
+            <h4 class="recurso-titulo">Sistema binario desde cero</h4>
+            <p class="recurso-desc">Conversión entre binario, decimal y hexadecimal con ejemplos paso a paso.</p>
+            <a href="https://www.youtube.com/watch?v=rsxT4FfRBaM" target="_blank" class="recurso-enlace">
+              Ver video <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Recurso 5: Video sobre redes -->
+        <div class="recurso-tarjeta">
+          <div class="recurso-thumb" style="background:linear-gradient(135deg,#1a3a1a,#0f172a);">
+            <i class="fas fa-network-wired" style="position:relative;z-index:1;"></i>
+          </div>
+          <div class="recurso-info">
+            <p class="recurso-tipo">Video · YouTube</p>
+            <h4 class="recurso-titulo">Redes de computadoras e Internet</h4>
+            <p class="recurso-desc">Conceptos fundamentales de redes: LAN, WAN, protocolos TCP/IP y direccionamiento.</p>
+            <a href="https://www.youtube.com/watch?v=3QhU9jd03a0" target="_blank" class="recurso-enlace">
+              Ver video <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Recurso 6: Video sobre HTML CSS -->
+        <div class="recurso-tarjeta">
+          <div class="recurso-thumb" style="background:linear-gradient(135deg,#3a2a1a,#0f172a);">
+            <i class="fas fa-code" style="position:relative;z-index:1;"></i>
+          </div>
+          <div class="recurso-info">
+            <p class="recurso-tipo">Video · YouTube</p>
+            <h4 class="recurso-titulo">HTML y CSS para principiantes</h4>
+            <p class="recurso-desc">Primer contacto con el desarrollo web: estructura HTML, estilos CSS y publicación.</p>
+            <a href="https://www.youtube.com/watch?v=EOwWFCGJXOc" target="_blank" class="recurso-enlace">
+              Ver video <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- fin recursos-grid -->
+    </div><!-- fin recursos-inner -->
+  </section>
+
+  <div class="divisor"></div>
+
+
+  <!-- ============================================
+       SECCIÓN 4: USO DE INTELIGENCIA ARTIFICIAL
+  ============================================ -->
+  <section id="ia">
+
+    <!-- Encabezado de la sección -->
+    <div class="seccion-encabezado">
+      <p class="seccion-numero">04 · Herramientas de IA</p>
+      <h2 class="seccion-titulo">Inteligencia Artificial en el proyecto</h2>
+      <p class="seccion-desc">Cómo se utilizaron herramientas de IA para apoyar el desarrollo de este texto paralelo.</p>
+    </div>
+
+    <!-- Bloque de dos columnas con texto y lista de herramientas -->
+    <div class="ia-contenedor">
+
+      <!-- Columna izquierda: descripción del uso de IA -->
+      <div class="ia-texto">
+        <h3>¿Cómo se utilizó la IA?</h3>
+        <p>
+          Las herramientas de inteligencia artificial se utilizaron como apoyo para redactar
+          y revisar explicaciones de los temas del curso, asegurando que el contenido fuera
+          claro y preciso. También apoyaron en la generación del código HTML y CSS del sitio,
+          la organización visual de la información y la verificación de conceptos técnicos.
+        </p>
+        <p>
+          Es importante aclarar que el contenido publicado fue comprendido y revisado por
+          el equipo, utilizando la guía didáctica del curso como referencia principal.
+          La IA funcionó como una herramienta de apoyo, no como fuente de conocimiento única.
+        </p>
+      </div>
+
+      <!-- Columna derecha: lista de herramientas utilizadas -->
+      <div>
+        <ul class="ia-herramientas">
+          <li>
+            <i class="fas fa-robot"></i>
+            <div>
+              <strong>Claude (Anthropic)</strong><br>
+              <span style="color:var(--gris-texto);font-size:0.83rem;">Generación de código HTML/CSS, redacción de contenido técnico y revisión de explicaciones.</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-comments"></i>
+            <div>
+              <strong>ChatGPT (OpenAI)</strong><br>
+              <span style="color:var(--gris-texto);font-size:0.83rem;">Consultas sobre conceptos de redes, bases de datos y sistemas operativos.</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-wand-magic-sparkles"></i>
+            <div>
+              <strong>Google Gemini</strong><br>
+              <span style="color:var(--gris-texto);font-size:0.83rem;">Búsqueda de recursos multimedia y verificación de información técnica actualizada.</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-palette"></i>
+            <div>
+              <strong>Canva AI</strong><br>
+              <span style="color:var(--gris-texto);font-size:0.83rem;">Apoyo en decisiones de diseño visual y organización de la información.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div><!-- fin ia-contenedor -->
+  </section>
+
+  <div class="divisor"></div>
+
+
+  <!-- ============================================
+       SECCIÓN 5: CONCLUSIÓN
+  ============================================ -->
+  <section id="conclusion">
+
+    <!-- Encabezado de la sección -->
+    <div class="seccion-encabezado">
+      <p class="seccion-numero">05 · Cierre</p>
+      <h2 class="seccion-titulo">Conclusión del proyecto</h2>
+    </div>
+
+    <!-- Caja con el texto de conclusión -->
+    <div class="conclusion-box">
+      <h3>Lo aprendido en este semestre</h3>
+      <p>
+        El curso de Introducción a los Sistemas de Cómputo nos permitió comprender el funcionamiento
+        completo de una computadora: desde su historia y componentes físicos, hasta los sistemas
+        operativos, bases de datos, redes y el desarrollo web. Cada tema se conecta con el siguiente,
+        formando una visión integral de cómo funciona la tecnología que usamos a diario.
+        Este texto paralelo busca ser una referencia útil y organizada de todo ese conocimiento,
+        presentado de manera accesible y visual.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- ============================================
+       PIE DE PÁGINA
+  ============================================ -->
+  <footer>
+    <p>
+      Proyecto Final · Introducción a los Sistemas de Cómputo ·
+      Universidad Mariano Gálvez de Guatemala · Centro Universitario Villa Nueva · 2025
+    </p>
+  </footer>
+
+
+  <!-- ============================================
+       JAVASCRIPT: MENÚ HAMBURGUESA EN MÓVIL
+  ============================================ -->
+  <script>
+    // Muestra u oculta el menú en pantallas pequeñas
+    function toggleMenu() {
+      const menu = document.getElementById('menuNav');
+      menu.classList.toggle('activo');
+    }
+
+    // Cierra el menú al hacer clic en un enlace (para móvil)
+    function cerrarMenu() {
+      const menu = document.getElementById('menuNav');
+      menu.classList.remove('activo');
+    }
+  </script>
+
+</body>
+</html>
